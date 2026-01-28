@@ -19,14 +19,12 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg lg:text-xl">LIM</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-primary-foreground font-bold text-sm lg:text-base leading-tight">L.I.M Scaffolding</h1>
-              <p className="text-steel-light text-xs">& Fabrication</p>
-            </div>
+          <a href="#home">
+            <img 
+              src="/logo.png" 
+              alt="L.I.M Scaffolding & Fabrication" 
+              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}
