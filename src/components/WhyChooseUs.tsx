@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-accent font-semibold uppercase tracking-wider text-sm">Why Choose Us</span>
+          <span className=" font-semibold uppercase tracking-wider text-sm">Why Choose Us</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-2 mb-4">
             The L.I.M Advantage
           </h2>

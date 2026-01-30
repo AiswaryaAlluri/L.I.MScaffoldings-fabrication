@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 const categories = [
   { id: "all", name: "All Projects" },
   { id: "scaffolding", name: "Scaffolding Systems" },
-  { id: "acrospan", name: "Acrow Spans" },
+  { id: "acrowspan", name: "Acrow Spans" },
   { id: "centeredsheets", name: "Centered Sheets" },
   { id: "clamps", name: "Clamps" },
   { id: "galvanizedplanks", name: "Metal Planks" },
@@ -30,10 +30,10 @@ const galleryItems: GalleryItem[] = [
   { id: "scaf6", category: "scaffolding", image: "/gallery/scaffolding/i6.png" },
 
   // Acrowspan
-  { id: "Acrow1", category: "Acrowspan", image: "/gallery/acrowspan/i1.png" },
-  { id: "Acrow2", category: "Acrowspan", image: "/gallery/acrowspan/i2.png" },
-  { id: "Acrow3", category: "Acrowspan", image: "/gallery/acrowspan/i3.png" },
-  { id: "Acrow4", category: "Acrowspan", image: "/gallery/acrowspan/i4.png" },
+  { id: "acrow1", category: "acrowspan", image: "/gallery/acrowspan/i1.png" },
+  { id: "acrow2", category: "acrowspan", image: "/gallery/acrowspan/i2.png" },
+  { id: "acrow3", category: "acrowspan", image: "/gallery/acrowspan/i3.png" },
+  { id: "acrow4", category: "acrowspan", image: "/gallery/acrowspan/i4.png" },
 
   // Centered Sheets
   { id: "cs1", category: "centeredsheets", image: "/gallery/centeredsheets/i1.png" },
@@ -86,11 +86,11 @@ const Gallery = () => {
     <section id="gallery" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Heading */}
-        <div className="text-center mb-12 animate-slide-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-metallic font-['Orbitron']">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Our Projects
           </h2>
-          <p className="text-muted-foreground text-lg font-['Rajdhani']">
+          <p className="text-muted-foreground text-lg">
             Showcasing our expertise in scaffolding and structural works
           </p>
         </div>
@@ -101,10 +101,10 @@ const Gallery = () => {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg font-['Rajdhani'] font-semibold transition-all duration-300 ${
+              className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
                 selectedCategory === cat.id
-                  ? "bg-primary text-primary-foreground shadow-glow"
-                  : "bg-card text-foreground border border-border hover:border-primary"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-foreground border border-border hover:border-primary hover:bg-primary/10"
               }`}
             >
               {cat.name}
@@ -127,12 +127,12 @@ const Gallery = () => {
                 loading="lazy"
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <div>
-                  <span className="text-accent font-['Rajdhani'] font-semibold text-sm">
+                  <span className="text-primary font-semibold text-sm">
                     {categories.find((c) => c.id === item.category)?.name}
                   </span>
-                  <p className="text-foreground font-['Rajdhani'] mt-1">
+                  <p className="text-primary-foreground mt-1">
                     Click to view full size
                   </p>
                 </div>
@@ -145,11 +145,11 @@ const Gallery = () => {
       {/* Lightbox */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-md flex items-center justify-center p-4"
           onClick={() => setLightboxImage(null)}
         >
           <button
-            className="absolute top-4 right-4 text-foreground hover:text-primary transition-colors"
+            className="absolute top-4 right-4 text-primary-foreground hover:text-primary transition-colors"
             onClick={() => setLightboxImage(null)}
             aria-label="Close lightbox"
           >
@@ -158,7 +158,7 @@ const Gallery = () => {
           <img
             src={lightboxImage}
             alt="Project preview"
-            className="max-w-full max-h-full object-contain rounded-lg shadow-glow"
+            className="max-w-full max-h-full object-contain rounded-lg"
           />
         </div>
       )}

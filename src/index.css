@@ -9,13 +9,13 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 150 10% 15%;
+    --foreground: 20 10% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 10% 15%;
+    --card-foreground: 20 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 10% 15%;
+    --popover-foreground: 20 10% 15%;
 
     /* Orange - primary brand */
     --primary: 25 95% 53%;
@@ -23,14 +23,14 @@ All colors MUST be HSL.
 
     /* Steel grey - secondary */
     --secondary: 210 10% 92%;
-    --secondary-foreground: 150 10% 20%;
+    --secondary-foreground: 20 10% 20%;
 
     /* Muted steel */
     --muted: 210 10% 96%;
     --muted-foreground: 210 10% 45%;
 
-    /* Bright lime accent for CTAs */
-    --accent: 85 70% 45%;
+    /* Dark orange accent for CTAs */
+    --accent: 20 70% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -38,7 +38,7 @@ All colors MUST be HSL.
 
     --border: 210 15% 88%;
     --input: 210 15% 88%;
-    --ring: 145 63% 32%;
+    --ring: 20 70% 40%;
 
     --radius: 0.5rem;
 
@@ -47,10 +47,10 @@ All colors MUST be HSL.
     --steel-light: 210 10% 75%;
     --steel-dark: 210 10% 25%;
     --charcoal: 210 15% 12%;
-    --lime: 85 70% 45%;
-    --forest: 145 63% 32%;
-    --forest-dark: 145 70% 22%;
-    --forest-light: 145 50% 45%;
+    --lime: 20 70% 45%;
+    --forest: 20 70% 40%;
+    --forest-dark: 20 80% 30%;
+    --forest-light: 20 60% 50%;
   }
 }
 
@@ -91,8 +91,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(85 70% 45% / 0.3); }
-  50% { box-shadow: 0 0 40px hsl(85 70% 45% / 0.5); }
+  0%, 100% { box-shadow: 0 0 20px hsl(20 70% 45% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(20 70% 45% / 0.5); }
 }
 
 .animate-float {

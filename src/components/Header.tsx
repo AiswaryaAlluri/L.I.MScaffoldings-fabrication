@@ -23,7 +23,7 @@ const Header = () => {
             <img 
               src="/logo.png" 
               alt="L.I.M Scaffolding & Fabrication" 
-              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+              className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
             />
           </a>
 

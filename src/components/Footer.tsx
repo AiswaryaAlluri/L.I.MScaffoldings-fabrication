@@ -9,14 +9,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">LIM</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg">L.I.M Scaffolding</h3>
-                <p className="text-steel-light text-sm">& Fabrication</p>
-              </div>
+            <div className="mb-6">
+              <img 
+                src="/logo.png" 
+                alt="L.I.M Scaffolding & Fabrication" 
+                className="w-28 h-28 object-contain"
+              />
             </div>
             <p className="text-steel-light mb-4 max-w-md leading-relaxed">
               Your trusted partner for scaffolding systems, acrow spans, and fabrication services 
