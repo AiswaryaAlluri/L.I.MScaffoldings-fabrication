@@ -1,71 +1,112 @@
-import { Wrench, Building2, Factory, Truck, Shield, Ruler } from 'lucide-react';
 
-const services = [
-  {
-    icon: Building2,
-    title: 'Scaffolding Systems',
-    description: 'Complete scaffolding solutions for residential, commercial, and industrial projects with certified materials.',
-  },
-  {
-    icon: Ruler,
-    title: 'Acrow Span Manufacturing',
-    description: 'High-quality acrow spans manufactured to precise specifications for structural support applications.',
-  },
-  {
-    icon: Wrench,
-    title: 'Jack Pipes & Props',
-    description: 'Heavy-duty jack pipes and adjustable props for concrete formwork and temporary support.',
-  },
-  {
-    icon: Factory,
-    title: 'Centering Sheets',
-    description: 'Durable steel centering sheets for concrete slab work, available in various sizes.',
-  },
-  {
-    icon: Shield,
-    title: 'Fabrication Works',
-    description: 'Custom steel fabrication services including welding, cutting, and metal forming.',
-  },
-  {
-    icon: Truck,
-    title: 'Rental & Supply',
-    description: 'Flexible rental options and timely supply of all scaffolding equipment and materials.',
-  },
-];
+import { useEffect, useRef, useState } from 'react';
 
-const ServicesSection = () => {
+export default function ServicesSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const products = [
+    {
+      title: 'Scaffolding Systems',
+      description: 'Heavy-duty scaffolding systems designed for maximum safety and efficiency.',
+      features: ['High load capacity', 'Easy assembly', 'Corrosion resistant'],
+      image: '/gallery/scaffolding/i5.png',
+    },
+    {
+      title: 'Centering Plates & Boxes',
+      description: 'Premium quality centering plates and boxes for concrete slab construction.',
+      features: ['Precise dimensions', 'Heavy-duty construction', 'Reusable'],
+      image: '/gallery/centeredsheets/i2.png',
+    },
+    {
+      title: 'Adjustable Telescopic Spans',
+      description: 'Versatile adjustable spans that provide flexible support solutions.',
+      features: ['Adjustable length', 'High strength', 'Lightweight design'],
+      image: '/gallery/acrowspan/i2.png',
+    },
+    {
+      title: 'Jack Pipes',
+      description: 'Robust jack pipes designed to support heavy loads during construction.',
+      features: ['High load capacity', 'Durable steel', 'Various sizes available'],
+      image: '/gallery/jackpipes/i4.png',
+    },
+    {
+      title: 'Column Boxes',
+      description: 'High-quality column boxes for concrete column construction.',
+      features: ['Round & square options', 'Smooth finish', 'Easy handling'],
+      image: '/gallery/columnbox/i2.jpg',
+    },
+    {
+      title: 'U Jacks & Base Jacks',
+      description: 'Essential adjustable support jacks for scaffolding systems.',
+      features: ['Adjustable height', 'Strong base plate', 'Corrosion resistant'],
+      image: '/gallery/ujake/i2.png',
+    },
+  ];
+
   return (
-    <section id="services" className="py-20 lg:py-32 bg-secondary">
+    <section id="services" className="py-5 bg-white" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary font-semibold uppercase tracking-wider text-sm">What We Offer</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">
-            Our Services
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Comprehensive scaffolding and fabrication solutions tailored to your construction needs.
+        <div className={`text-center mb-12 section-animate ${isVisible ? 'visible' : ''}`}>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Comprehensive range of construction materials manufactured to the highest standards of quality and safety.
           </p>
         </div>
-
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product, index) => (
             <div
               key={index}
-              className="group bg-card p-6 lg:p-8 rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group section-animate ${isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                <service.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
+                  {product.title}
+                </h3>
+                <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
+                <div className="space-y-2">
+                  {product.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm">
+                      <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
-};
-
-export default ServicesSection;
+}
